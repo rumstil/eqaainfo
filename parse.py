@@ -11,7 +11,7 @@ from lib.util import *
 from lib.eqdata import *
 from lib.eqreader import *
 
-AATableOpcode = 0x3788 
+AATableOpcode = 0x2895
 OutputFile = 'aainfo.txt'
 
 OutputFormat = 'EQSPELLPARSER'
@@ -221,6 +221,9 @@ def handleEQPacket(opcode, bytes, timeStamp):
       record.cost = readUInt32(bytes)
       record.aaID = readUInt32(bytes)
       record.rank = readUInt32(bytes)
+
+      if (record.titleSID == 17547 or record.descID == 17547 or record.aaID == 17547):
+          print('*****')
       
       record.reqSkills = []
       record.reqSkillCount = readUInt32(bytes)
